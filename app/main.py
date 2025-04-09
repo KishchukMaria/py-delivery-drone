@@ -10,20 +10,16 @@ class BaseRobot:
         self.coords = coords
 
     def go_forward(self, step: int = 1) -> None:
-        for i in self.coords:
-            self.coords[i] + step
+        self.coords[1] += step
 
     def go_back(self, step: int = 1) -> None:
-        for i in self.coords:
-            self.coords[-i] + step
+        self.coords[1] -= step
 
     def go_right(self, step: int = 1) -> None:
-        for i in self.coords:
-            self.coords[i] + step
+        self.coords[0] += step
 
     def go_left(self, step: int = 1) -> None:
-        for i in self.coords:
-            self.coords[-i] + step
+        self.coords[0] -= step
 
     def get_info(self) -> str:
         return f"Robot: {self.name}, Weight: {self.weight}"
@@ -36,13 +32,11 @@ class FlyingRobot(BaseRobot):
         super().__init__(name, weight)
         self.coords = coords
 
-    def go_up(self) -> None:
-        for i in self.coords:
-            self.coords[i] + 1
+    def go_up(self, step: int = 1) -> None:
+        self.coords[2] += step
 
-    def go_down(self) -> None:
-        for i in self.coords:
-            self.coords[i] - 1
+    def go_down(self, step: int = 1) -> None:
+        self.coords[2] -= step
 
 
 class DeliveryDrone(FlyingRobot):
